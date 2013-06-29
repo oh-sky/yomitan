@@ -1,7 +1,10 @@
 <?php
-$context = stream_context_create(array('http' => array(
-																				 'method' => 'GET',
-																				 'header' => "User-Agent: {$_SERVER['HTTP_USER_AGENT']}",
-																			 )));
 $url = 'http://yomi-tan.jp/api/yomi.php?k=h&t='.urlencode($_GET['kanji']);
-echo file_get_contents($url,false,$context);
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_HEADER, 0);
+curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+
+curl_exec($ch);
+curl_close($ch);
