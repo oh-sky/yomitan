@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>よみたんajax</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $('#botan').click(function(){
+	$.ajax({ type: "GET",
+		 url:"/api.php",
+		 dataType:"text",
+		 data:"kanji="+$('#kanji').val(),
+		 success:function(response_text){
+		     $('#response_field').text(response_text);
+		 },
+		 error:function(aaa,bbb,ccc){
+		     alert(aaa.status);
+		 },
+	       });
+    });
+});
+</script>
+</head>
+<body>
+<input type="text" id="kanji" >
+<input type="button" id="botan" value="よみかた">
+<p id="response_field"></p>
+</body>
+</html>
