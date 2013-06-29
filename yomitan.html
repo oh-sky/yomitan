@@ -5,7 +5,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
-    $('#botan').click(function(){
+    $('#kanji').keyup(function(){
 	$.ajax({ type: "GET",
 		 url:"/api.php",
 		 dataType:"text",
@@ -23,7 +23,6 @@ $(function(){
 </head>
 <body>
 <input type="text" id="kanji" >
-<input type="button" id="botan" value="よみかた">
 <p id="response_field"></p>
 </body>
 </html>
